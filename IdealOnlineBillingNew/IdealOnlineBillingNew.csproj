@@ -3527,6 +3527,7 @@
     <Compile Include="Context\tblCategoryMaster.cs">
       <DependentUpon>IdealWeb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ABCController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductCompanyController.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
