@@ -65,7 +65,10 @@ namespace CRUDAjax.Models
         //Method for Adding an Employee
         public int Add(Employee emp)
         {
-            int i;
+            int i=0;
+            if (emp.Name!=null)
+            { 
+           
             using(SqlConnection con=new SqlConnection(cs))
             {
                 con.Open();
@@ -78,6 +81,8 @@ namespace CRUDAjax.Models
                 com.Parameters.AddWithValue("@Country", emp.Country);
                 com.Parameters.AddWithValue("@Action", "Insert");
                 i = com.ExecuteNonQuery();
+            }
+
             }
             return i;
         }

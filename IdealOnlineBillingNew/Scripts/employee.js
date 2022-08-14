@@ -3,10 +3,10 @@
         responsive: true
     });
 
-    $(".searchData").select2({
-        dropdownParent: $("#myModal"),
-        width: '100%'
-    });
+    //$(".searchData").select2({
+    //    dropdownParent: $("#myModal"),
+    //    width: '100%'
+    //});
 
     loadData();
     fillState();
@@ -14,8 +14,9 @@
 });
 function fillState()
 {
-    $('#stList').html('');
-    $('#stList').append('<option value="" selected>--- Select Course ---</option>');
+    $('#stList').html('');    
+    var html = "";
+    html+='<option value="" selected>--- Select Employee ---</option>';
     $.ajax(
         {
             url: "/ProductCompany/GetState",
@@ -24,13 +25,14 @@ function fillState()
             dataType: "json",
             success: function (result)
             {
-                var s = '<option value="-1">-Select-</option>';
+                //var s = '<option value="-1">-Select-</option>';
                 for (var i = 0; i < result.length; i++)
                 {
-                    $("#stList").append('<option value="' + result[i].EmployeeID + '">' + result[i].Name + '</option>');
+                    //console.log(result[i]["EmployeeID"]);
+                    html += '<option value="' + result[i]["EmployeeID"] + '">' + result[i]["Name"] + '</option>';
                 }
-
-                //$("#stList").html(s);
+               // console.log(html);
+                $("#stList").html(html);
             }
 
         });
@@ -94,21 +96,27 @@ function Add()
             Age: $('#Age').val(),
             State: $('#State').val(),
             Country: $('#Country').val()
-
+           
 
         };
       
         $.ajax(
             {
+               
                 url: "/ProductCompany/Add",
                 data: JSON.stringify(empObj),
                 type: "POST",
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-                    loadData();
-                    alert('Record Inserted Successfully..!!');
-                    $('#myModal').modal('hide');
+                    if (result) {
+                        loadData();
+                        alert('Record Inserted Successfully..!!');
+                        $('#myModal').modal('hide');
+                    } else {
+                        alert('Unable to  Insert Record');
+                    }
+
                 },
                 error: function (errormessage) {
                     alert(errormessage.responseText);
@@ -192,7 +200,7 @@ function validate()
     {
         $('#Name').css('border-color', 'red');
         isValid = false;
-        alert('Name is Required');
+       // alert('Name is Required');
     }
     else {
         $('#Name').css('border-color','lightgray')
@@ -202,7 +210,7 @@ function validate()
     {
         $('#Age').css('border-color', 'red');
         isValid = false;
-        alert('Age is Required..!!');
+       // alert('Age is Required..!!');
 
     } else
     {
@@ -213,7 +221,7 @@ function validate()
     {
         $('#State').css('border-color', 'red');
         isValid = false;
-        alert('State is Required..!!');
+       // alert('State is Required..!!');
 
     } else {
         $('#State').css('border-color','lightgray')
