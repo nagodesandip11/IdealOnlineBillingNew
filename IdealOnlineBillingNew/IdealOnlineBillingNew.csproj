@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -3527,13 +3530,14 @@
     <Compile Include="Context\tblCategoryMaster.cs">
       <DependentUpon>IdealWeb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\ABCController.cs" />
+    <Compile Include="Controllers\DapperCRUDController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductCompanyController.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DapperORM.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeeDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -3746,6 +3750,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\ABC\" />
+    <Folder Include="Views\DapperCRUD\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
