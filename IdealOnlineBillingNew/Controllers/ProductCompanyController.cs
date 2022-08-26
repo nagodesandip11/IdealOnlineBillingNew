@@ -13,6 +13,7 @@ namespace IdealOnlineBillingNew.Controllers
         // GET: ProductCompany
         public ActionResult Index()
         {
+
             return View();
         }
         public JsonResult List()
