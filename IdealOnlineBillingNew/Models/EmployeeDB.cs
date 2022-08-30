@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.IO;
+using System.Web;
+using IdealOnlineBillingNew.Context;
 
 namespace CRUDAjax.Models
 {
     public class EmployeeDB
     {
+        IdealWebDB db = new IdealWebDB();
         //declare connection string
         string cs = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
 
@@ -26,16 +30,22 @@ namespace CRUDAjax.Models
                 SqlDataReader rdr = com.ExecuteReader();
                 while(rdr.Read())
                 {
+                    
                     lst.Add(new Employee { 
                         EmployeeID=Convert.ToInt32(rdr["EmployeeId"]),
                         Name=rdr["Name"].ToString(),
                         Age = Convert.ToInt32(rdr["Age"]),
                         State = rdr["State"].ToString(),
                         Country = rdr["Country"].ToString(),
+                        ImageBytes =(byte[])rdr["ImageBytes"] ,
+                        ImagePath = Convert.ToBase64String((byte[])rdr["ImageBytes"]),
                     });
                 }
-                return lst;
-            }
+
+
+             }
+           
+            return lst;
         }
 
         public List<Employee> StateList()
@@ -65,6 +75,18 @@ namespace CRUDAjax.Models
         //Method for Adding an Employee
         public int Add(Employee emp)
         {
+            HttpPostedFile postedFile;
+            var fileName = emp.ImageFile;
+            string newFileName = Guid.NewGuid() + Path.GetExtension(fileName.FileName);
+            string path = System.Web.HttpContext.Current.Server.MapPath("~/Images");
+            fileName.SaveAs(path + newFileName);
+            System.Web.Hosting.HostingEnvironment.MapPath("~/Images/"+fileName.FileName+"");
+            
+               
+            byte[] imageBytes = null;
+            BinaryReader reader = new BinaryReader(fileName.InputStream);
+            imageBytes = reader.ReadBytes(fileName.ContentLength);
+
             int i=0;
             if (emp.Name!=null)
             { 
@@ -79,7 +101,11 @@ namespace CRUDAjax.Models
                 com.Parameters.AddWithValue("@Age", emp.Age);
                 com.Parameters.AddWithValue("@State", emp.State);
                 com.Parameters.AddWithValue("@Country", emp.Country);
-                com.Parameters.AddWithValue("@Action", "Insert");
+                com.Parameters.AddWithValue("@ImagePath", path);
+                com.Parameters.AddWithValue("@ImageBytes", imageBytes);
+                com.Parameters.AddWithValue("@ImageName", fileName.FileName);
+                
+                    com.Parameters.AddWithValue("@Action", "Insert");
                 i = com.ExecuteNonQuery();
             }
 

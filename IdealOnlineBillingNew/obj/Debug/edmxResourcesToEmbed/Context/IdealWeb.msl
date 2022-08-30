@@ -4,6 +4,9 @@
     <EntitySetMapping Name="Employees">
       <EntityTypeMapping TypeName="IdealWebApplicationModel.Employee">
         <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="ImageBytes" ColumnName="ImageBytes" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
           <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Age" ColumnName="Age" />

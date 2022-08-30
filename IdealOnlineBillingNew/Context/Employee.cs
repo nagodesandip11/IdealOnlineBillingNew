@@ -20,5 +20,8 @@ namespace IdealOnlineBillingNew.Context
         public string State { get; set; }
         public string Country { get; set; }
         public string Action { get; set; }
+        public string ImagePath { get; set; }
+        public byte[] ImageBytes { get; set; }
+        public string ImageName { get; set; }
     }
 }

@@ -51,12 +51,17 @@ function loadData() {
                 var html = '';
                 var rs = result;
                 $.each(result, function (key, item) {
+
+                    
+
+
                     html += '<tr>';
                     //html += '<td>' + item.EmployeeID + '</td>';
                     html += '<td id=' + item.EmployeeID+'_trName>' + item.Name + '</td>';
                     html += '<td id=' + item.EmployeeID +'_trAge>' + item.Age + '</td>';
                     html += '<td id=' + item.EmployeeID +'_trState>' + item.State + '</td>';
                     html += '<td id=' + item.EmployeeID +'_trCountry>' + item.Country + '</td>';
+                    html += '<td><img src="data:image/gif;base64,@System.Convert.ToBase64String((byte[]),Base64FormattingOptions.None)"></td>';
                     html += '<td><a href="#" class="btn btn-info" id="' + item.EmployeeID + '_emp" onclick="getData(this)"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit</a> <a href="#" class="btn btn-danger" onclick="Delele(' + item.EmployeeID + ')"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</a></td>';
                     html += '</tr>';
                 });
@@ -89,25 +94,36 @@ function Add()
         return false;
     }
     else {
-        var empObj = {
+        //var empObj = {
 
-            EmployeeID: $('#EmployeeID').val(),
-            Name: $('#Name').val(),
-            Age: $('#Age').val(),
-            State: $('#State').val(),
-            Country: $('#Country').val()
-           
+        //    EmployeeID: $('#EmployeeID').val(),
+        //    Name: $('#Name').val(),
+        //    Age: $('#Age').val(),
+        //    State: $('#State').val(),
+        //    Country: $('#Country').val(),
+        //    ImagePath: $('#img').get(0).files
 
-        };
+        //};
+
+        var file = $("#img").get(0).files;
+        var data = new FormData;
+        data.append("EmployeeID", $('#EmployeeID').val());
+        data.append("Name", $("#Name").val());
+        data.append("Age", $("#Age").val());
+        data.append("State", $('#State').val());
+        data.append("Country", $('#Country').val());
+        data.append("ImageFile", file[0]);
       
         $.ajax(
             {
-               
-                url: "/ProductCompany/Add",
-                data: JSON.stringify(empObj),
+                async: true,
                 type: "POST",
-                contentType: "application/json;charset=utf-8",
                 dataType: "json",
+                url: "/ProductCompany/Add",
+                data: data, /*JSON.stringify(data),*/
+                processData: false,
+                contentType: false, /*"application/json;charset=utf-8",*/
+               
                 success: function (result) {
                     if (result) {
                         loadData();

@@ -10,6 +10,9 @@
     <Property Name="State" Type="nvarchar" MaxLength="50" />
     <Property Name="Country" Type="nvarchar" MaxLength="50" />
     <Property Name="Action" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImagePath" Type="varchar" MaxLength="100" />
+    <Property Name="ImageBytes" Type="image" />
+    <Property Name="ImageName" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="tblCategoryMaster">
     <Key>

@@ -27,5 +27,7 @@ namespace IdealOnlineBillingNew.Context
     
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<tblCategoryMaster> tblCategoryMasters { get; set; }
+
+        
     }
 }
