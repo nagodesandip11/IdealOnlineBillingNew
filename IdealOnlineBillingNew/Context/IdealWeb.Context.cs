@@ -12,6 +12,8 @@ namespace IdealOnlineBillingNew.Context
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class IdealWebDB : DbContext
     {
@@ -27,7 +29,10 @@ namespace IdealOnlineBillingNew.Context
     
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<tblCategoryMaster> tblCategoryMasters { get; set; }
-
-        
+    
+        public virtual ObjectResult<SelectEmployee_Result> SelectEmployee()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectEmployee_Result>("SelectEmployee");
+        }
     }
 }

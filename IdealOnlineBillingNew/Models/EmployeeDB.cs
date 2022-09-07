@@ -38,7 +38,7 @@ namespace CRUDAjax.Models
                         State = rdr["State"].ToString(),
                         Country = rdr["Country"].ToString(),
                         ImageBytes =(byte[])rdr["ImageBytes"] ,
-                        ImagePath = Convert.ToBase64String((byte[])rdr["ImageBytes"]),
+                        ImagePath = rdr["ImageName"].ToString(),
                     });
                 }
 
@@ -66,6 +66,7 @@ namespace CRUDAjax.Models
                         Age = Convert.ToInt32(rdr["Age"]),
                         State = rdr["State"].ToString(),
                         Country = rdr["Country"].ToString(),
+
                     });
                 }
                 return lst;
@@ -75,17 +76,7 @@ namespace CRUDAjax.Models
         //Method for Adding an Employee
         public int Add(Employee emp)
         {
-            HttpPostedFile postedFile;
-            var fileName = emp.ImageFile;
-            string newFileName = Guid.NewGuid() + Path.GetExtension(fileName.FileName);
-            string path = System.Web.HttpContext.Current.Server.MapPath("~/Images");
-            fileName.SaveAs(path + newFileName);
-            System.Web.Hosting.HostingEnvironment.MapPath("~/Images/"+fileName.FileName+"");
             
-               
-            byte[] imageBytes = null;
-            BinaryReader reader = new BinaryReader(fileName.InputStream);
-            imageBytes = reader.ReadBytes(fileName.ContentLength);
 
             int i=0;
             if (emp.Name!=null)
@@ -101,10 +92,10 @@ namespace CRUDAjax.Models
                 com.Parameters.AddWithValue("@Age", emp.Age);
                 com.Parameters.AddWithValue("@State", emp.State);
                 com.Parameters.AddWithValue("@Country", emp.Country);
-                com.Parameters.AddWithValue("@ImagePath", path);
-                com.Parameters.AddWithValue("@ImageBytes", imageBytes);
-                com.Parameters.AddWithValue("@ImageName", fileName.FileName);
-                
+                    com.Parameters.AddWithValue("@ImagePath", emp.ImagePath);
+                    com.Parameters.AddWithValue("@ImageBytes", emp.ImageBytes);
+                    com.Parameters.AddWithValue("@ImageName", emp.ImageFile.FileName);
+
                     com.Parameters.AddWithValue("@Action", "Insert");
                 i = com.ExecuteNonQuery();
             }

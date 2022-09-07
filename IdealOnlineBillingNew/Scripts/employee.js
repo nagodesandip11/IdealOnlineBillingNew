@@ -50,6 +50,7 @@ function loadData() {
             success: function (result) {
                 var html = '';
                 var rs = result;
+                console.log(rs);
                 $.each(result, function (key, item) {
 
                     
@@ -61,7 +62,7 @@ function loadData() {
                     html += '<td id=' + item.EmployeeID +'_trAge>' + item.Age + '</td>';
                     html += '<td id=' + item.EmployeeID +'_trState>' + item.State + '</td>';
                     html += '<td id=' + item.EmployeeID +'_trCountry>' + item.Country + '</td>';
-                    html += '<td><img src="data:image/gif;base64,@System.Convert.ToBase64String((byte[]),Base64FormattingOptions.None)"></td>';
+                    html += '<td><img id=' + item.EmployeeID +'_trImg src="' + location.protocol + "//" + location.host + '/Images/' + item.ImagePath +'" height="30" width="30"></td>';
                     html += '<td><a href="#" class="btn btn-info" id="' + item.EmployeeID + '_emp" onclick="getData(this)"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit</a> <a href="#" class="btn btn-danger" onclick="Delele(' + item.EmployeeID + ')"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Delete</a></td>';
                     html += '</tr>';
                 });
@@ -81,6 +82,7 @@ function getData(ele) {
     $("#Age").val($("#" + id + "_trAge").html());
     $("#State").val($("#" + id + "_trState").html());
     $("#Country").val($("#" + id + "_trCountry").html());
+    $("#dimg").attr('src', $("#" + id + "_trImg").attr('src'));
     $('#myModal').modal('show');
     $('#btnUpdate').show();
     $('#btnAdd').hide();

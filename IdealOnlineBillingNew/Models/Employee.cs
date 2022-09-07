@@ -22,7 +22,8 @@ namespace CRUDAjax.Models
         
         public string Country { get; set; }
         public string ImagePath { get; set; }
-       public Byte[] ImageBytes { get; set; }
+        public string ImageName { get; set; }
+        public Byte[] ImageBytes { get; set; }
         public HttpPostedFileWrapper ImageFile { get; set; }
     }
 }
