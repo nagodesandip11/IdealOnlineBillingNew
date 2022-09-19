@@ -29,6 +29,10 @@ namespace IdealOnlineBillingNew.Context
     
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<tblCategoryMaster> tblCategoryMasters { get; set; }
+        public virtual DbSet<Tbl_Tax> Tbl_Tax { get; set; }
+        public virtual DbSet<Tbl_Unit> Tbl_Unit { get; set; }
+        public virtual DbSet<tblProductMaster> tblProductMasters { get; set; }
+        public virtual DbSet<tblFirmDetail> tblFirmDetails { get; set; }
     
         public virtual ObjectResult<SelectEmployee_Result> SelectEmployee()
         {

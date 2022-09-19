@@ -19,6 +19,29 @@
           <Property Name="ImageBytes" Type="image" />
           <Property Name="ImageName" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="Tbl_Tax">
+          <Key>
+            <PropertyRef Name="taxId" />
+          </Key>
+          <Property Name="taxId" Type="bigint" Nullable="false" />
+          <Property Name="taxName" Type="nvarchar" MaxLength="50" />
+          <Property Name="rate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="createdDate" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="updatedDate" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Tbl_Unit">
+          <Key>
+            <PropertyRef Name="unitId" />
+          </Key>
+          <Property Name="unitId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="unitName" Type="nvarchar" MaxLength="50" />
+          <Property Name="formalName" Type="nvarchar" MaxLength="50" />
+          <Property Name="decimalPlaces" Type="int" />
+          <Property Name="createdDate" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="updatedDate" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
         <EntityType Name="tblCategoryMaster">
           <Key>
             <PropertyRef Name="categoryId" />
@@ -27,10 +50,58 @@
           <Property Name="categoryName" Type="nvarchar" MaxLength="50" />
           <Property Name="isActive" Type="bit" />
         </EntityType>
+        <EntityType Name="tblFirmDetails">
+          <Key>
+            <PropertyRef Name="firmId" />
+          </Key>
+          <Property Name="firmId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firmName" Type="varchar" MaxLength="100" />
+          <Property Name="firmAddress" Type="varchar" MaxLength="100" />
+          <Property Name="firmcontact" Type="varchar" MaxLength="100" />
+          <Property Name="gstNo" Type="varchar" MaxLength="20" />
+          <Property Name="subjectTo" Type="varchar" MaxLength="100" />
+          <Property Name="firmFor" Type="varchar" MaxLength="100" />
+          <Property Name="Services" Type="varchar" MaxLength="100" />
+          <Property Name="bankName" Type="varchar" MaxLength="100" />
+          <Property Name="acNo" Type="varchar" MaxLength="100" />
+          <Property Name="branchname" Type="varchar" MaxLength="100" />
+          <Property Name="ifscCode" Type="varchar" MaxLength="30" />
+          <Property Name="logoPath" Type="varchar" MaxLength="100" />
+          <Property Name="logoBinary" Type="image" />
+          <Property Name="firmType" Type="varchar" MaxLength="100" />
+          <Property Name="cmpId" Type="nchar" MaxLength="10" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="updatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblProductMaster">
+          <Key>
+            <PropertyRef Name="productId" />
+          </Key>
+          <Property Name="productId" Type="bigint" Nullable="false" />
+          <Property Name="productName" Type="nvarchar" MaxLength="100" />
+          <Property Name="productTypeId" Type="bigint" />
+          <Property Name="prodCmpId" Type="bigint" />
+          <Property Name="unitId" Type="bigint" />
+          <Property Name="taxId" Type="bigint" />
+          <Property Name="hsn" Type="nvarchar" MaxLength="10" />
+          <Property Name="reOrderQty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MaxQty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="firmId" Type="bigint" />
+          <Property Name="barcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="barcodeImgPath" Type="varchar" MaxLength="100" />
+          <Property Name="barcodeImgBytes" Type="image" />
+          <Property Name="barcoodeImageName" Type="varbinary" MaxLength="100" />
+          <Property Name="updatedDate" Type="datetime" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
         <Function Name="SelectEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="IdealWebApplicationModelStoreContainer">
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Tax" EntityType="Self.Tbl_Tax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Unit" EntityType="Self.Tbl_Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCategoryMaster" EntityType="Self.tblCategoryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFirmDetails" EntityType="Self.tblFirmDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProductMaster" EntityType="Self.tblProductMaster" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -62,6 +133,10 @@
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="tblCategoryMasters" EntityType="Self.tblCategoryMaster" />
           <FunctionImport Name="SelectEmployee" ReturnType="Collection(IdealWebApplicationModel.SelectEmployee_Result)" />
+          <EntitySet Name="Tbl_Tax" EntityType="IdealWebApplicationModel.Tbl_Tax" />
+          <EntitySet Name="Tbl_Unit" EntityType="IdealWebApplicationModel.Tbl_Unit" />
+          <EntitySet Name="tblProductMasters" EntityType="IdealWebApplicationModel.tblProductMaster" />
+          <EntitySet Name="tblFirmDetails" EntityType="IdealWebApplicationModel.tblFirmDetail" />
         </EntityContainer>
         <ComplexType Name="SelectEmployee_Result">
           <Property Type="Int64" Name="EmployeeID" Nullable="false" />
@@ -74,6 +149,73 @@
           <Property Type="Binary" Name="ImageBytes" Nullable="true" MaxLength="Max" />
           <Property Type="String" Name="ImageName" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <EntityType Name="Tbl_Tax">
+          <Key>
+            <PropertyRef Name="taxId" />
+          </Key>
+          <Property Name="taxId" Type="Int64" Nullable="false" />
+          <Property Name="taxName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="createdDate" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="updatedDate" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Tbl_Unit">
+          <Key>
+            <PropertyRef Name="unitId" />
+          </Key>
+          <Property Name="unitId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="unitName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="formalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="decimalPlaces" Type="Int32" />
+          <Property Name="createdDate" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="updatedDate" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="isActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblProductMaster">
+          <Key>
+            <PropertyRef Name="productId" />
+          </Key>
+          <Property Name="productId" Type="Int64" Nullable="false" />
+          <Property Name="productName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="productTypeId" Type="Int64" />
+          <Property Name="prodCmpId" Type="Int64" />
+          <Property Name="unitId" Type="Int64" />
+          <Property Name="taxId" Type="Int64" />
+          <Property Name="hsn" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="reOrderQty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MaxQty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="firmId" Type="Int64" />
+          <Property Name="barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="barcodeImgPath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="barcodeImgBytes" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="barcoodeImageName" Type="Binary" MaxLength="100" FixedLength="false" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+          <Property Name="isActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblFirmDetail">
+          <Key>
+            <PropertyRef Name="firmId" />
+          </Key>
+          <Property Name="firmId" Type="Int64" Nullable="false" />
+          <Property Name="firmName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="firmAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="firmcontact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="gstNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="subjectTo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="firmFor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Services" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="bankName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="acNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="branchname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ifscCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="logoPath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="logoBinary" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="firmType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cmpId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="updatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -119,6 +261,77 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Tbl_Tax">
+            <EntityTypeMapping TypeName="IdealWebApplicationModel.Tbl_Tax">
+              <MappingFragment StoreEntitySet="Tbl_Tax">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="taxName" ColumnName="taxName" />
+                <ScalarProperty Name="taxId" ColumnName="taxId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Unit">
+            <EntityTypeMapping TypeName="IdealWebApplicationModel.Tbl_Unit">
+              <MappingFragment StoreEntitySet="Tbl_Unit">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="decimalPlaces" ColumnName="decimalPlaces" />
+                <ScalarProperty Name="formalName" ColumnName="formalName" />
+                <ScalarProperty Name="unitName" ColumnName="unitName" />
+                <ScalarProperty Name="unitId" ColumnName="unitId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProductMasters">
+            <EntityTypeMapping TypeName="IdealWebApplicationModel.tblProductMaster">
+              <MappingFragment StoreEntitySet="tblProductMaster">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="barcoodeImageName" ColumnName="barcoodeImageName" />
+                <ScalarProperty Name="barcodeImgBytes" ColumnName="barcodeImgBytes" />
+                <ScalarProperty Name="barcodeImgPath" ColumnName="barcodeImgPath" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="firmId" ColumnName="firmId" />
+                <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
+                <ScalarProperty Name="reOrderQty" ColumnName="reOrderQty" />
+                <ScalarProperty Name="hsn" ColumnName="hsn" />
+                <ScalarProperty Name="taxId" ColumnName="taxId" />
+                <ScalarProperty Name="unitId" ColumnName="unitId" />
+                <ScalarProperty Name="prodCmpId" ColumnName="prodCmpId" />
+                <ScalarProperty Name="productTypeId" ColumnName="productTypeId" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFirmDetails">
+            <EntityTypeMapping TypeName="IdealWebApplicationModel.tblFirmDetail">
+              <MappingFragment StoreEntitySet="tblFirmDetails">
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="cmpId" ColumnName="cmpId" />
+                <ScalarProperty Name="firmType" ColumnName="firmType" />
+                <ScalarProperty Name="logoBinary" ColumnName="logoBinary" />
+                <ScalarProperty Name="logoPath" ColumnName="logoPath" />
+                <ScalarProperty Name="ifscCode" ColumnName="ifscCode" />
+                <ScalarProperty Name="branchname" ColumnName="branchname" />
+                <ScalarProperty Name="acNo" ColumnName="acNo" />
+                <ScalarProperty Name="bankName" ColumnName="bankName" />
+                <ScalarProperty Name="Services" ColumnName="Services" />
+                <ScalarProperty Name="firmFor" ColumnName="firmFor" />
+                <ScalarProperty Name="subjectTo" ColumnName="subjectTo" />
+                <ScalarProperty Name="gstNo" ColumnName="gstNo" />
+                <ScalarProperty Name="firmcontact" ColumnName="firmcontact" />
+                <ScalarProperty Name="firmAddress" ColumnName="firmAddress" />
+                <ScalarProperty Name="firmName" ColumnName="firmName" />
+                <ScalarProperty Name="firmId" ColumnName="firmId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

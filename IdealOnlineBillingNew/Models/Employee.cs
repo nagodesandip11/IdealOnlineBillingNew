@@ -19,7 +19,6 @@ namespace CRUDAjax.Models
         public int Age { get; set; }
         
         public string State { get; set; }
-        
         public string Country { get; set; }
         public string ImagePath { get; set; }
         public string ImageName { get; set; }

@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace IdealOnlineBillingNew.Controllers
 {
-    public class ImageExampleController : Controller
+    public class getWebAPIDataUsingAjaxController : Controller
     {
-        // GET: ImageExample
+        // GET: getWebAPIDataUsingAjax
         public ActionResult Index()
         {
             return View();

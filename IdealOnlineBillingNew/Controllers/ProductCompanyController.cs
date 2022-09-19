@@ -14,7 +14,6 @@ namespace IdealOnlineBillingNew.Controllers
         // GET: ProductCompany
         public ActionResult Index()
         {
-
             return View();
         }
         public JsonResult List()
@@ -27,7 +26,6 @@ namespace IdealOnlineBillingNew.Controllers
         }
         public JsonResult Add(Employee emp)
         {
-
             //HttpPostedFile postedFile;
             var fileName = emp.ImageFile;
             string newFileName = fileName.FileName;//Guid.NewGuid() + Path.GetExtension(fileName.FileName); 

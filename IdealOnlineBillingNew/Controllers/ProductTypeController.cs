@@ -34,7 +34,7 @@ namespace IdealOnlineBillingNew.Controllers
             var datainDB = db.tblCategoryMasters.FirstOrDefault(x => x.categoryId == model.categoryId);
             datainDB.categoryName = model.categoryName;
             
-         int result= db.SaveChanges();
+            int result= db.SaveChanges();
             return Json(result, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Delete(int ID)
@@ -43,7 +43,6 @@ namespace IdealOnlineBillingNew.Controllers
             var res = db.tblCategoryMasters.First(x => x.categoryId == ID);
             db.tblCategoryMasters.Remove(res);
              int s=db.SaveChanges();
-
             return Json(s, JsonRequestBehavior.AllowGet);
         }
     }
