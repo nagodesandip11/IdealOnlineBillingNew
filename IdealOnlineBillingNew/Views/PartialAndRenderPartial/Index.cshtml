@@ -1,0 +1,38 @@
+﻿@model IEnumerable<IdealOnlineBillingNew.Context.Employee>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-responsive">
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            State
+                        </th>
+                        <th>
+                            Country
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        @Html.Partial("_EmployeeList", item) 
+                    }
+                </table>
+               
+            </div>
+        </div>
+        </div>
+</section>

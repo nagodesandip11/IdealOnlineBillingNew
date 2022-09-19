@@ -1,0 +1,20 @@
+﻿@model IdealOnlineBillingNew.Context.Employee
+<tr>
+    <td>
+        @Html.DisplayFor(m => m.EmployeeID)
+    </td>
+    <td>
+        @Html.DisplayFor(m => m.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(m => m.State)
+    </td>
+    <td>
+        @Html.DisplayFor(m => m.Country)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeID })  |
+        @Html.ActionLink("Delete", "Delete", new { id = Model.EmployeeID })
+    </td>
+</tr>
+
