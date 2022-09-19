@@ -10,6 +10,32 @@
     <Property Name="State" Type="nvarchar" MaxLength="50" />
     <Property Name="Country" Type="nvarchar" MaxLength="50" />
     <Property Name="Action" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImagePath" Type="varchar" MaxLength="100" />
+    <Property Name="ImageBytes" Type="image" />
+    <Property Name="ImageName" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Tbl_Tax">
+    <Key>
+      <PropertyRef Name="taxId" />
+    </Key>
+    <Property Name="taxId" Type="bigint" Nullable="false" />
+    <Property Name="taxName" Type="nvarchar" MaxLength="50" />
+    <Property Name="rate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="createdDate" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="updatedDate" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Tbl_Unit">
+    <Key>
+      <PropertyRef Name="unitId" />
+    </Key>
+    <Property Name="unitId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="unitName" Type="nvarchar" MaxLength="50" />
+    <Property Name="formalName" Type="nvarchar" MaxLength="50" />
+    <Property Name="decimalPlaces" Type="int" />
+    <Property Name="createdDate" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="updatedDate" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="isActive" Type="bit" />
   </EntityType>
   <EntityType Name="tblCategoryMaster">
     <Key>
@@ -19,8 +45,57 @@
     <Property Name="categoryName" Type="nvarchar" MaxLength="50" />
     <Property Name="isActive" Type="bit" />
   </EntityType>
+  <EntityType Name="tblFirmDetails">
+    <Key>
+      <PropertyRef Name="firmId" />
+    </Key>
+    <Property Name="firmId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firmName" Type="varchar" MaxLength="100" />
+    <Property Name="firmAddress" Type="varchar" MaxLength="100" />
+    <Property Name="firmcontact" Type="varchar" MaxLength="100" />
+    <Property Name="gstNo" Type="varchar" MaxLength="20" />
+    <Property Name="subjectTo" Type="varchar" MaxLength="100" />
+    <Property Name="firmFor" Type="varchar" MaxLength="100" />
+    <Property Name="Services" Type="varchar" MaxLength="100" />
+    <Property Name="bankName" Type="varchar" MaxLength="100" />
+    <Property Name="acNo" Type="varchar" MaxLength="100" />
+    <Property Name="branchname" Type="varchar" MaxLength="100" />
+    <Property Name="ifscCode" Type="varchar" MaxLength="30" />
+    <Property Name="logoPath" Type="varchar" MaxLength="100" />
+    <Property Name="logoBinary" Type="image" />
+    <Property Name="firmType" Type="varchar" MaxLength="100" />
+    <Property Name="cmpId" Type="nchar" MaxLength="10" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="updatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblProductMaster">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="productId" Type="bigint" Nullable="false" />
+    <Property Name="productName" Type="nvarchar" MaxLength="100" />
+    <Property Name="productTypeId" Type="bigint" />
+    <Property Name="prodCmpId" Type="bigint" />
+    <Property Name="unitId" Type="bigint" />
+    <Property Name="taxId" Type="bigint" />
+    <Property Name="hsn" Type="nvarchar" MaxLength="10" />
+    <Property Name="reOrderQty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MaxQty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="firmId" Type="bigint" />
+    <Property Name="barcode" Type="nvarchar" MaxLength="50" />
+    <Property Name="barcodeImgPath" Type="varchar" MaxLength="100" />
+    <Property Name="barcodeImgBytes" Type="image" />
+    <Property Name="barcoodeImageName" Type="varbinary" MaxLength="100" />
+    <Property Name="updatedDate" Type="datetime" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <Function Name="SelectEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="IdealWebApplicationModelStoreContainer">
     <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Tax" EntityType="Self.Tbl_Tax" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Unit" EntityType="Self.Tbl_Unit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblCategoryMaster" EntityType="Self.tblCategoryMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFirmDetails" EntityType="Self.tblFirmDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblProductMaster" EntityType="Self.tblProductMaster" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

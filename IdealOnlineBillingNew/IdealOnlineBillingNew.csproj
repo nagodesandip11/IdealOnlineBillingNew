@@ -47,12 +47,28 @@
       <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -99,6 +115,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ApplicationJS\firmDetails.js" />
     <Content Include="ApplicationJS\ProductCategory.js" />
     <Content Include="Assets\css\materialize.css" />
     <Content Include="Assets\css\select2.min.css" />
@@ -3497,7 +3514,7 @@
       <DependentUpon>IdealWeb.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-2.0.0.intellisense.js" />
-    <Content Include="Scripts\employee.js" />
+    <Content Include="ApplicationJS\employee.js" />
     <Content Include="Scripts\jquery-2.0.0.js" />
     <Content Include="Scripts\jquery-2.0.0.min.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
@@ -3505,6 +3522,7 @@
     <Content Include="Scripts\jquery-ui-1.13.2.min.js" />
     <Content Include="Scripts\jquery.dataTables.min.css" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\XHR2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -3527,10 +3545,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IdealWeb.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Context\SelectEmployee_Result.cs">
+      <DependentUpon>IdealWeb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\tblCategoryMaster.cs">
       <DependentUpon>IdealWeb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\tblFirmDetail.cs">
+      <DependentUpon>IdealWeb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\tblProductMaster.cs">
+      <DependentUpon>IdealWeb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Tbl_Tax.cs">
+      <DependentUpon>IdealWeb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Tbl_Unit.cs">
+      <DependentUpon>IdealWeb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\DapperCRUDController.cs" />
+    <Compile Include="Controllers\FirmController.cs" />
+    <Compile Include="Controllers\getWebAPIDataUsingAjaxController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductCompanyController.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
@@ -3736,10 +3771,15 @@
     <Content Include="Assets\scss\_waveseffect.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\ProductCompany\Index.cshtml" />
     <Content Include="Scripts\jquery-2.0.0.min.map" />
     <Content Include="Views\ProductType\Index.cshtml" />
+    <Content Include="Views\DapperCRUD\Index.cshtml" />
+    <Content Include="Views\ImageExample\Index.cshtml" />
+    <Content Include="Views\Firm\Index.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\getWebAPIDataUsingAjax\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3749,11 +3789,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ABC\" />
-    <Folder Include="Views\DapperCRUD\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
