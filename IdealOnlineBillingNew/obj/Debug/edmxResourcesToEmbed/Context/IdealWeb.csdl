@@ -25,5 +25,88 @@
   <EntityContainer Name="IdealWebDB" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Employees" EntityType="Self.Employee" />
     <EntitySet Name="tblCategoryMasters" EntityType="Self.tblCategoryMaster" />
+    <FunctionImport Name="SelectEmployee" ReturnType="Collection(IdealWebApplicationModel.SelectEmployee_Result)" />
+    <EntitySet Name="Tbl_Tax" EntityType="IdealWebApplicationModel.Tbl_Tax" />
+    <EntitySet Name="Tbl_Unit" EntityType="IdealWebApplicationModel.Tbl_Unit" />
+    <EntitySet Name="tblProductMasters" EntityType="IdealWebApplicationModel.tblProductMaster" />
+    <EntitySet Name="tblFirmDetails" EntityType="IdealWebApplicationModel.tblFirmDetail" />
   </EntityContainer>
+  <ComplexType Name="SelectEmployee_Result">
+    <Property Type="Int64" Name="EmployeeID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Age" Nullable="true" />
+    <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Action" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ImagePath" Nullable="true" MaxLength="100" />
+    <Property Type="Binary" Name="ImageBytes" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="ImageName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <EntityType Name="Tbl_Tax">
+    <Key>
+      <PropertyRef Name="taxId" />
+    </Key>
+    <Property Name="taxId" Type="Int64" Nullable="false" />
+    <Property Name="taxName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="rate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="createdDate" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="updatedDate" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Tbl_Unit">
+    <Key>
+      <PropertyRef Name="unitId" />
+    </Key>
+    <Property Name="unitId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="unitName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="formalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="decimalPlaces" Type="Int32" />
+    <Property Name="createdDate" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="updatedDate" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tblProductMaster">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="productId" Type="Int64" Nullable="false" />
+    <Property Name="productName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="productTypeId" Type="Int64" />
+    <Property Name="prodCmpId" Type="Int64" />
+    <Property Name="unitId" Type="Int64" />
+    <Property Name="taxId" Type="Int64" />
+    <Property Name="hsn" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="reOrderQty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MaxQty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="firmId" Type="Int64" />
+    <Property Name="barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="barcodeImgPath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="barcodeImgBytes" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="barcoodeImageName" Type="Binary" MaxLength="100" FixedLength="false" />
+    <Property Name="updatedDate" Type="DateTime" Precision="3" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tblFirmDetail">
+    <Key>
+      <PropertyRef Name="firmId" />
+    </Key>
+    <Property Name="firmId" Type="Int64" Nullable="false" />
+    <Property Name="firmName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="firmAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="firmcontact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="gstNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="subjectTo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="firmFor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Services" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="bankName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="acNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="branchname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ifscCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="logoPath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="logoBinary" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="firmType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="cmpId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="updatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
 </Schema>

@@ -115,6 +115,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ApplicationJS\firmDetails.js" />
     <Content Include="ApplicationJS\ProductCategory.js" />
     <Content Include="Assets\css\materialize.css" />
     <Content Include="Assets\css\select2.min.css" />
@@ -3513,7 +3514,7 @@
       <DependentUpon>IdealWeb.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-2.0.0.intellisense.js" />
-    <Content Include="Scripts\employee.js" />
+    <Content Include="ApplicationJS\employee.js" />
     <Content Include="Scripts\jquery-2.0.0.js" />
     <Content Include="Scripts\jquery-2.0.0.min.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
@@ -3544,12 +3545,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IdealWeb.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Context\SelectEmployee_Result.cs">
+      <DependentUpon>IdealWeb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\tblCategoryMaster.cs">
       <DependentUpon>IdealWeb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\tblFirmDetail.cs">
+      <DependentUpon>IdealWeb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\tblProductMaster.cs">
+      <DependentUpon>IdealWeb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Tbl_Tax.cs">
+      <DependentUpon>IdealWeb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Tbl_Unit.cs">
+      <DependentUpon>IdealWeb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\DapperCRUDController.cs" />
+    <Compile Include="Controllers\FirmController.cs" />
+    <Compile Include="Controllers\getWebAPIDataUsingAjaxController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ImageExampleController.cs" />
     <Compile Include="Controllers\ProductCompanyController.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -3754,12 +3771,15 @@
     <Content Include="Assets\scss\_waveseffect.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\ProductCompany\Index.cshtml" />
     <Content Include="Scripts\jquery-2.0.0.min.map" />
     <Content Include="Views\ProductType\Index.cshtml" />
     <Content Include="Views\DapperCRUD\Index.cshtml" />
     <Content Include="Views\ImageExample\Index.cshtml" />
+    <Content Include="Views\Firm\Index.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\getWebAPIDataUsingAjax\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3770,7 +3790,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
-    <Folder Include="Views\ABC\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -25,5 +25,91 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SelectEmployee" FunctionName="IdealWebApplicationModel.Store.SelectEmployee">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IdealWebApplicationModel.SelectEmployee_Result">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+          <ScalarProperty Name="ImageBytes" ColumnName="ImageBytes" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Tbl_Tax">
+      <EntityTypeMapping TypeName="IdealWebApplicationModel.Tbl_Tax">
+        <MappingFragment StoreEntitySet="Tbl_Tax">
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="rate" ColumnName="rate" />
+          <ScalarProperty Name="taxName" ColumnName="taxName" />
+          <ScalarProperty Name="taxId" ColumnName="taxId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Unit">
+      <EntityTypeMapping TypeName="IdealWebApplicationModel.Tbl_Unit">
+        <MappingFragment StoreEntitySet="Tbl_Unit">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="decimalPlaces" ColumnName="decimalPlaces" />
+          <ScalarProperty Name="formalName" ColumnName="formalName" />
+          <ScalarProperty Name="unitName" ColumnName="unitName" />
+          <ScalarProperty Name="unitId" ColumnName="unitId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProductMasters">
+      <EntityTypeMapping TypeName="IdealWebApplicationModel.tblProductMaster">
+        <MappingFragment StoreEntitySet="tblProductMaster">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="barcoodeImageName" ColumnName="barcoodeImageName" />
+          <ScalarProperty Name="barcodeImgBytes" ColumnName="barcodeImgBytes" />
+          <ScalarProperty Name="barcodeImgPath" ColumnName="barcodeImgPath" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+          <ScalarProperty Name="firmId" ColumnName="firmId" />
+          <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
+          <ScalarProperty Name="reOrderQty" ColumnName="reOrderQty" />
+          <ScalarProperty Name="hsn" ColumnName="hsn" />
+          <ScalarProperty Name="taxId" ColumnName="taxId" />
+          <ScalarProperty Name="unitId" ColumnName="unitId" />
+          <ScalarProperty Name="prodCmpId" ColumnName="prodCmpId" />
+          <ScalarProperty Name="productTypeId" ColumnName="productTypeId" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFirmDetails">
+      <EntityTypeMapping TypeName="IdealWebApplicationModel.tblFirmDetail">
+        <MappingFragment StoreEntitySet="tblFirmDetails">
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="cmpId" ColumnName="cmpId" />
+          <ScalarProperty Name="firmType" ColumnName="firmType" />
+          <ScalarProperty Name="logoBinary" ColumnName="logoBinary" />
+          <ScalarProperty Name="logoPath" ColumnName="logoPath" />
+          <ScalarProperty Name="ifscCode" ColumnName="ifscCode" />
+          <ScalarProperty Name="branchname" ColumnName="branchname" />
+          <ScalarProperty Name="acNo" ColumnName="acNo" />
+          <ScalarProperty Name="bankName" ColumnName="bankName" />
+          <ScalarProperty Name="Services" ColumnName="Services" />
+          <ScalarProperty Name="firmFor" ColumnName="firmFor" />
+          <ScalarProperty Name="subjectTo" ColumnName="subjectTo" />
+          <ScalarProperty Name="gstNo" ColumnName="gstNo" />
+          <ScalarProperty Name="firmcontact" ColumnName="firmcontact" />
+          <ScalarProperty Name="firmAddress" ColumnName="firmAddress" />
+          <ScalarProperty Name="firmName" ColumnName="firmName" />
+          <ScalarProperty Name="firmId" ColumnName="firmId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    
+}
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>DASHBOARD</h2>
+        </div>
+        <h2>Index</h2>
+        
+        <input  type="submit" value="Submit" onclick="loadData()"/>
+        </div>
+    </section>
+        <script src="~/Scripts/jquery-3.5.1.js"></script>
+        <link href="~/Scripts/jquery.dataTables.min.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery.dataTables.min.js"></script>
+        <script>
+
+            // Initialize the DataTable
+            $(document).ready(function () {
+                loadData();
+            });
+
+            function loadData() {
+                alert('Ok');
+                $.ajax(
+                    {
+                        url: "http://localhost:51962/api/Employee/Index",
+                        type: "GET",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        crossDomain: true,
+                        success: function (result) {
+                           
+                            console.log(result);
+                            alert(result);
+                        }
+                    });
+            }
+        </script>
