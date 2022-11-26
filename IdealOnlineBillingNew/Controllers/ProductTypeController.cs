@@ -28,7 +28,6 @@ namespace IdealOnlineBillingNew.Controllers
             int rs=db.SaveChanges();
             return Json(rs, JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult Update(tblCategoryMaster model)
         {
             var datainDB = db.tblCategoryMasters.FirstOrDefault(x => x.categoryId == model.categoryId);

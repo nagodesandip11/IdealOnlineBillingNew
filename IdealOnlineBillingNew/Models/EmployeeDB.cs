@@ -17,7 +17,7 @@ namespace CRUDAjax.Models
         IdealWebDB db = new IdealWebDB();
         //declare connection string
         string cs = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
-
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString);
         //Return list of all Employees
         public List<Employee> ListAll()
         {

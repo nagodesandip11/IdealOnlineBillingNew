@@ -33,6 +33,7 @@ namespace IdealOnlineBillingNew.Context
         public virtual DbSet<Tbl_Unit> Tbl_Unit { get; set; }
         public virtual DbSet<tblProductMaster> tblProductMasters { get; set; }
         public virtual DbSet<tblFirmDetail> tblFirmDetails { get; set; }
+        public virtual DbSet<tblUserLogin> tblUserLogins { get; set; }
     
         public virtual ObjectResult<SelectEmployee_Result> SelectEmployee()
         {

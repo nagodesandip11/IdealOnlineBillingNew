@@ -3523,6 +3523,7 @@
     <Content Include="Scripts\jquery.dataTables.min.css" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\XHR2.js" />
+    <Content Include="TextFile1.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -3557,6 +3558,9 @@
     <Compile Include="Context\tblProductMaster.cs">
       <DependentUpon>IdealWeb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\tblUserLogin.cs">
+      <DependentUpon>IdealWeb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Tbl_Tax.cs">
       <DependentUpon>IdealWeb.tt</DependentUpon>
     </Compile>
@@ -3567,6 +3571,8 @@
     <Compile Include="Controllers\FirmController.cs" />
     <Compile Include="Controllers\getWebAPIDataUsingAjaxController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PartialAndRenderPartialController.cs" />
     <Compile Include="Controllers\ProductCompanyController.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -3780,6 +3786,9 @@
     <Content Include="Views\Firm\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\getWebAPIDataUsingAjax\Index.cshtml" />
+    <Content Include="Views\PartialAndRenderPartial\Index.cshtml" />
+    <Content Include="Views\Shared\_EmployeeList.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
