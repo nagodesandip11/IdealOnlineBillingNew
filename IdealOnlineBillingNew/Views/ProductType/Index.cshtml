@@ -36,7 +36,7 @@
                         </table>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -68,15 +68,18 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 </section>
+@Scripts.Render("~/bundles/js");
+@Scripts.Render("~/Application/js");
+@*<script src="~/Scripts/jquery-3.5.1.js"></script>*@
 
-<script src="~/Scripts/jquery-3.5.1.js"></script>
-<link href="~/Scripts/jquery.dataTables.min.css" rel="stylesheet" />
-<script src="~/Scripts/jquery.dataTables.min.js"></script>
-<script src="~/ApplicationJS/ProductCategory.js"></script>
-<script>
+<link href="~/Scripts/jquery.dataTables.min.css" rel="stylesheet"/>
+@*<script src="~/Scripts/jquery.dataTables.min.js"></script>*@
+@*<script src="~/ApplicationJS/ProductCategory.js"></script>*@
 
+
+<script> 
     // Initialize the DataTable
     $(document).ready(function () {
         //$('#tableID').DataTable({
