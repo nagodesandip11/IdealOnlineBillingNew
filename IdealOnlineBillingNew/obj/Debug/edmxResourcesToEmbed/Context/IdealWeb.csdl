@@ -30,6 +30,7 @@
     <EntitySet Name="Tbl_Unit" EntityType="IdealWebApplicationModel.Tbl_Unit" />
     <EntitySet Name="tblProductMasters" EntityType="IdealWebApplicationModel.tblProductMaster" />
     <EntitySet Name="tblFirmDetails" EntityType="IdealWebApplicationModel.tblFirmDetail" />
+    <EntitySet Name="tblUserLogins" EntityType="IdealWebApplicationModel.tblUserLogin" />
   </EntityContainer>
   <ComplexType Name="SelectEmployee_Result">
     <Property Type="Int64" Name="EmployeeID" Nullable="false" />
@@ -108,5 +109,13 @@
     <Property Name="cmpId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="isActive" Type="Boolean" />
     <Property Name="updatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblUserLogin">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

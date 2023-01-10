@@ -33,6 +33,6 @@ namespace IdealOnlineBillingNew.Context
         public string cmpId { get; set; }
         public Nullable<bool> isActive { get; set; }
         public Nullable<System.DateTime> updatedDate { get; set; }
-        public HttpPostedFileWrapper ImageFile { get; set; }
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 }

@@ -24,5 +24,6 @@ namespace CRUDAjax.Models
         public string ImageName { get; set; }
         public Byte[] ImageBytes { get; set; }
         public HttpPostedFileWrapper ImageFile { get; set; }
+        // public HttpPostedFileWrapper ImageFile { get; set; }
     }
 }

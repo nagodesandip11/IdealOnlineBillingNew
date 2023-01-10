@@ -94,6 +94,14 @@
           <Property Name="updatedDate" Type="datetime" />
           <Property Name="isActive" Type="bit" />
         </EntityType>
+        <EntityType Name="tblUserLogin">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+        </EntityType>
         <Function Name="SelectEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="IdealWebApplicationModelStoreContainer">
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
@@ -102,6 +110,7 @@
           <EntitySet Name="tblCategoryMaster" EntityType="Self.tblCategoryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFirmDetails" EntityType="Self.tblFirmDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProductMaster" EntityType="Self.tblProductMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserLogin" EntityType="Self.tblUserLogin" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -137,6 +146,7 @@
           <EntitySet Name="Tbl_Unit" EntityType="IdealWebApplicationModel.Tbl_Unit" />
           <EntitySet Name="tblProductMasters" EntityType="IdealWebApplicationModel.tblProductMaster" />
           <EntitySet Name="tblFirmDetails" EntityType="IdealWebApplicationModel.tblFirmDetail" />
+          <EntitySet Name="tblUserLogins" EntityType="IdealWebApplicationModel.tblUserLogin" />
         </EntityContainer>
         <ComplexType Name="SelectEmployee_Result">
           <Property Type="Int64" Name="EmployeeID" Nullable="false" />
@@ -215,6 +225,14 @@
           <Property Name="cmpId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="isActive" Type="Boolean" />
           <Property Name="updatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblUserLogin">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -329,6 +347,15 @@
                 <ScalarProperty Name="firmAddress" ColumnName="firmAddress" />
                 <ScalarProperty Name="firmName" ColumnName="firmName" />
                 <ScalarProperty Name="firmId" ColumnName="firmId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserLogins">
+            <EntityTypeMapping TypeName="IdealWebApplicationModel.tblUserLogin">
+              <MappingFragment StoreEntitySet="tblUserLogin">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
