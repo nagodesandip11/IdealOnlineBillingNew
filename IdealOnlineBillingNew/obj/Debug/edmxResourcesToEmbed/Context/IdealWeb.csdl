@@ -28,9 +28,10 @@
     <FunctionImport Name="SelectEmployee" ReturnType="Collection(IdealWebApplicationModel.SelectEmployee_Result)" />
     <EntitySet Name="Tbl_Tax" EntityType="IdealWebApplicationModel.Tbl_Tax" />
     <EntitySet Name="Tbl_Unit" EntityType="IdealWebApplicationModel.Tbl_Unit" />
-    <EntitySet Name="tblProductMasters" EntityType="IdealWebApplicationModel.tblProductMaster" />
     <EntitySet Name="tblFirmDetails" EntityType="IdealWebApplicationModel.tblFirmDetail" />
     <EntitySet Name="tblUserLogins" EntityType="IdealWebApplicationModel.tblUserLogin" />
+    <EntitySet Name="Tbl_ItemMaster" EntityType="IdealWebApplicationModel.Tbl_ItemMaster" />
+    <EntitySet Name="tblStudents" EntityType="IdealWebApplicationModel.tblStudent" />
   </EntityContainer>
   <ComplexType Name="SelectEmployee_Result">
     <Property Type="Int64" Name="EmployeeID" Nullable="false" />
@@ -66,27 +67,6 @@
     <Property Name="updatedDate" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="isActive" Type="Boolean" />
   </EntityType>
-  <EntityType Name="tblProductMaster">
-    <Key>
-      <PropertyRef Name="productId" />
-    </Key>
-    <Property Name="productId" Type="Int64" Nullable="false" />
-    <Property Name="productName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="productTypeId" Type="Int64" />
-    <Property Name="prodCmpId" Type="Int64" />
-    <Property Name="unitId" Type="Int64" />
-    <Property Name="taxId" Type="Int64" />
-    <Property Name="hsn" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="reOrderQty" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="MaxQty" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="firmId" Type="Int64" />
-    <Property Name="barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="barcodeImgPath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="barcodeImgBytes" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="barcoodeImageName" Type="Binary" MaxLength="100" FixedLength="false" />
-    <Property Name="updatedDate" Type="DateTime" Precision="3" />
-    <Property Name="isActive" Type="Boolean" />
-  </EntityType>
   <EntityType Name="tblFirmDetail">
     <Key>
       <PropertyRef Name="firmId" />
@@ -117,5 +97,31 @@
     <Property Name="userId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Tbl_ItemMaster">
+    <Key>
+      <PropertyRef Name="itemId" />
+    </Key>
+    <Property Name="itemId" Type="Int64" Nullable="false" />
+    <Property Name="ItemName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="itemTypeId" Type="Int64" />
+    <Property Name="unitId" Type="Int64" />
+    <Property Name="taxId" Type="Int64" />
+    <Property Name="SalesRate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MrpRate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="productDisc" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="createdDate" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="updatedDate" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="reOrderQty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MaxQty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tblStudent">
+    <Key>
+      <PropertyRef Name="studentId" />
+    </Key>
+    <Property Name="studentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="studentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

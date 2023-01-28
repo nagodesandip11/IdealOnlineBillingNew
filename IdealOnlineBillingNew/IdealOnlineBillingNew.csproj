@@ -3491,18 +3491,6 @@
       <LastGenOutput>IdealWeb.cs</LastGenOutput>
     </Content>
     <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.esm.js" />
-    <Content Include="Scripts\bootstrap.esm.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.esm.min.js.map" />
-    <Content Include="Scripts\bootstrap.esm.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
@@ -3526,13 +3514,8 @@
     <Content Include="Context\IdealWeb.edmx.diagram">
       <DependentUpon>IdealWeb.edmx</DependentUpon>
     </Content>
-    <None Include="Scripts\jquery-2.0.0.intellisense.js" />
     <Content Include="ApplicationJS\employee.js" />
-    <Content Include="Scripts\jquery-2.0.0.js" />
-    <Content Include="Scripts\jquery-2.0.0.min.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
-    <Content Include="Scripts\jquery-ui-1.13.2.js" />
-    <Content Include="Scripts\jquery-ui-1.13.2.min.js" />
     <Content Include="Scripts\jquery.dataTables.min.css" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\XHR2.js" />
@@ -3569,10 +3552,13 @@
     <Compile Include="Context\tblFirmDetail.cs">
       <DependentUpon>IdealWeb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\tblProductMaster.cs">
+    <Compile Include="Context\tblStudent.cs">
       <DependentUpon>IdealWeb.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\tblUserLogin.cs">
+      <DependentUpon>IdealWeb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Tbl_ItemMaster.cs">
       <DependentUpon>IdealWeb.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Tbl_Tax.cs">
@@ -3588,6 +3574,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PartialAndRenderPartialController.cs" />
     <Compile Include="Controllers\ProductCompanyController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3793,7 +3780,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\ProductCompany\Index.cshtml" />
-    <Content Include="Scripts\jquery-2.0.0.min.map" />
     <Content Include="Views\ProductType\Index.cshtml" />
     <Content Include="Views\DapperCRUD\Index.cshtml" />
     <Content Include="Views\ImageExample\Index.cshtml" />
@@ -3803,6 +3789,7 @@
     <Content Include="Views\PartialAndRenderPartial\Index.cshtml" />
     <Content Include="Views\Shared\_EmployeeList.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
