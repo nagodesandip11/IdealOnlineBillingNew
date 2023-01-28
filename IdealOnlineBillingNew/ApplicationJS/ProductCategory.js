@@ -5,10 +5,10 @@ $(document).ready(function () {
         responsive: true
     });
 
-    $(".searchData").select2({
-        dropdownParent: $("#myModal"),
-        width: '100%'
-    });
+    //$(".searchData").select2({
+    //    dropdownParent: $("#myModal"),
+    //    width: '100%'
+    //});
 
     loadData();
     
@@ -16,6 +16,9 @@ $(document).ready(function () {
 });
 function loadData()
 {
+    if ($.fn.DataTable.isDataTable('#dataTable-AllData')) {
+        $('#dataTable-AllData').DataTable().destroy();
+    }
     $.ajax(  
         {
             url: "/ProductType/List",

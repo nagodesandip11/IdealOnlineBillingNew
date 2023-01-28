@@ -225,7 +225,6 @@ C:\Users\Shree\Source\Repos\IdealOnlineBillingNewTest\IdealOnlineBillingNew\bin\
 C:\Users\Shree\Source\Repos\IdealOnlineBillingNewTest\IdealOnlineBillingNew\bin\System.Web.Helpers.xml
 C:\Users\Shree\Source\Repos\IdealOnlineBillingNewTest\IdealOnlineBillingNew\bin\System.Web.Mvc.xml
 C:\Users\Shree\Source\Repos\IdealOnlineBillingNewTest\IdealOnlineBillingNew\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Shree\Source\Repos\IdealOnlineBillingNewTest\IdealOnlineBillingNew\obj\Debug\IdealOnlineBillingNew.csproj.AssemblyReference.cache
 C:\Users\Shree\Source\Repos\IdealOnlineBillingNewTest\IdealOnlineBillingNew\obj\Debug\IdealOnlineBillingNew.csproj.CoreCompileInputs.cache
 C:\Users\Shree\Source\Repos\IdealOnlineBillingNewTest\IdealOnlineBillingNew\obj\Debug\IdealOnlineBillingNew.csproj.CopyComplete
 C:\Users\Shree\Source\Repos\IdealOnlineBillingNewTest\IdealOnlineBillingNew\obj\Debug\IdealOnlineBillingNew.dll

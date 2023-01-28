@@ -14,6 +14,24 @@
     <Property Name="ImageBytes" Type="image" />
     <Property Name="ImageName" Type="varchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="Tbl_ItemMaster">
+    <Key>
+      <PropertyRef Name="itemId" />
+    </Key>
+    <Property Name="itemId" Type="bigint" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="80" />
+    <Property Name="itemTypeId" Type="bigint" />
+    <Property Name="unitId" Type="bigint" />
+    <Property Name="taxId" Type="bigint" />
+    <Property Name="SalesRate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MrpRate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="productDisc" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="createdDate" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="updatedDate" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="reOrderQty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MaxQty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
   <EntityType Name="Tbl_Tax">
     <Key>
       <PropertyRef Name="taxId" />
@@ -68,26 +86,13 @@
     <Property Name="isActive" Type="bit" />
     <Property Name="updatedDate" Type="datetime" />
   </EntityType>
-  <EntityType Name="tblProductMaster">
+  <EntityType Name="tblStudent">
     <Key>
-      <PropertyRef Name="productId" />
+      <PropertyRef Name="studentId" />
     </Key>
-    <Property Name="productId" Type="bigint" Nullable="false" />
-    <Property Name="productName" Type="nvarchar" MaxLength="100" />
-    <Property Name="productTypeId" Type="bigint" />
-    <Property Name="prodCmpId" Type="bigint" />
-    <Property Name="unitId" Type="bigint" />
-    <Property Name="taxId" Type="bigint" />
-    <Property Name="hsn" Type="nvarchar" MaxLength="10" />
-    <Property Name="reOrderQty" Type="decimal" Precision="18" Scale="2" />
-    <Property Name="MaxQty" Type="decimal" Precision="18" Scale="2" />
-    <Property Name="firmId" Type="bigint" />
-    <Property Name="barcode" Type="nvarchar" MaxLength="50" />
-    <Property Name="barcodeImgPath" Type="varchar" MaxLength="100" />
-    <Property Name="barcodeImgBytes" Type="image" />
-    <Property Name="barcoodeImageName" Type="varbinary" MaxLength="100" />
-    <Property Name="updatedDate" Type="datetime" />
-    <Property Name="isActive" Type="bit" />
+    <Property Name="studentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImagePath" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="tblUserLogin">
     <Key>
@@ -100,11 +105,12 @@
   <Function Name="SelectEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="IdealWebApplicationModelStoreContainer">
     <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_ItemMaster" EntityType="Self.Tbl_ItemMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Tax" EntityType="Self.Tbl_Tax" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Unit" EntityType="Self.Tbl_Unit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblCategoryMaster" EntityType="Self.tblCategoryMaster" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblFirmDetails" EntityType="Self.tblFirmDetails" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tblProductMaster" EntityType="Self.tblProductMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblStudent" EntityType="Self.tblStudent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUserLogin" EntityType="Self.tblUserLogin" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

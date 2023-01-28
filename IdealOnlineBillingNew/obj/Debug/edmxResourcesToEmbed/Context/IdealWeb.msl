@@ -65,28 +65,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tblProductMasters">
-      <EntityTypeMapping TypeName="IdealWebApplicationModel.tblProductMaster">
-        <MappingFragment StoreEntitySet="tblProductMaster">
-          <ScalarProperty Name="isActive" ColumnName="isActive" />
-          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
-          <ScalarProperty Name="barcoodeImageName" ColumnName="barcoodeImageName" />
-          <ScalarProperty Name="barcodeImgBytes" ColumnName="barcodeImgBytes" />
-          <ScalarProperty Name="barcodeImgPath" ColumnName="barcodeImgPath" />
-          <ScalarProperty Name="barcode" ColumnName="barcode" />
-          <ScalarProperty Name="firmId" ColumnName="firmId" />
-          <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
-          <ScalarProperty Name="reOrderQty" ColumnName="reOrderQty" />
-          <ScalarProperty Name="hsn" ColumnName="hsn" />
-          <ScalarProperty Name="taxId" ColumnName="taxId" />
-          <ScalarProperty Name="unitId" ColumnName="unitId" />
-          <ScalarProperty Name="prodCmpId" ColumnName="prodCmpId" />
-          <ScalarProperty Name="productTypeId" ColumnName="productTypeId" />
-          <ScalarProperty Name="productName" ColumnName="productName" />
-          <ScalarProperty Name="productId" ColumnName="productId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tblFirmDetails">
       <EntityTypeMapping TypeName="IdealWebApplicationModel.tblFirmDetail">
         <MappingFragment StoreEntitySet="tblFirmDetails">
@@ -117,6 +95,34 @@
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="userName" ColumnName="userName" />
           <ScalarProperty Name="userId" ColumnName="userId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_ItemMaster">
+      <EntityTypeMapping TypeName="IdealWebApplicationModel.Tbl_ItemMaster">
+        <MappingFragment StoreEntitySet="Tbl_ItemMaster">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
+          <ScalarProperty Name="reOrderQty" ColumnName="reOrderQty" />
+          <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="productDisc" ColumnName="productDisc" />
+          <ScalarProperty Name="MrpRate" ColumnName="MrpRate" />
+          <ScalarProperty Name="SalesRate" ColumnName="SalesRate" />
+          <ScalarProperty Name="taxId" ColumnName="taxId" />
+          <ScalarProperty Name="unitId" ColumnName="unitId" />
+          <ScalarProperty Name="itemTypeId" ColumnName="itemTypeId" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStudents">
+      <EntityTypeMapping TypeName="IdealWebApplicationModel.tblStudent">
+        <MappingFragment StoreEntitySet="tblStudent">
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+          <ScalarProperty Name="studentName" ColumnName="studentName" />
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

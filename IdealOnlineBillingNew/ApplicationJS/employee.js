@@ -7,7 +7,9 @@
     //    dropdownParent: $("#myModal"),
     //    width: '100%'
     //});
-
+    $('#dataTable-AllData').dataTable({
+        searching: false
+    });
     loadData();
     fillState();
 

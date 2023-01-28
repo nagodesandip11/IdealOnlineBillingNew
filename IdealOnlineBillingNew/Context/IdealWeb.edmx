@@ -19,6 +19,24 @@
           <Property Name="ImageBytes" Type="image" />
           <Property Name="ImageName" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="Tbl_ItemMaster">
+          <Key>
+            <PropertyRef Name="itemId" />
+          </Key>
+          <Property Name="itemId" Type="bigint" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="80" />
+          <Property Name="itemTypeId" Type="bigint" />
+          <Property Name="unitId" Type="bigint" />
+          <Property Name="taxId" Type="bigint" />
+          <Property Name="SalesRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MrpRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="productDisc" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="createdDate" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="updatedDate" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="reOrderQty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MaxQty" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
         <EntityType Name="Tbl_Tax">
           <Key>
             <PropertyRef Name="taxId" />
@@ -73,26 +91,13 @@
           <Property Name="isActive" Type="bit" />
           <Property Name="updatedDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="tblProductMaster">
+        <EntityType Name="tblStudent">
           <Key>
-            <PropertyRef Name="productId" />
+            <PropertyRef Name="studentId" />
           </Key>
-          <Property Name="productId" Type="bigint" Nullable="false" />
-          <Property Name="productName" Type="nvarchar" MaxLength="100" />
-          <Property Name="productTypeId" Type="bigint" />
-          <Property Name="prodCmpId" Type="bigint" />
-          <Property Name="unitId" Type="bigint" />
-          <Property Name="taxId" Type="bigint" />
-          <Property Name="hsn" Type="nvarchar" MaxLength="10" />
-          <Property Name="reOrderQty" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="MaxQty" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="firmId" Type="bigint" />
-          <Property Name="barcode" Type="nvarchar" MaxLength="50" />
-          <Property Name="barcodeImgPath" Type="varchar" MaxLength="100" />
-          <Property Name="barcodeImgBytes" Type="image" />
-          <Property Name="barcoodeImageName" Type="varbinary" MaxLength="100" />
-          <Property Name="updatedDate" Type="datetime" />
-          <Property Name="isActive" Type="bit" />
+          <Property Name="studentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="tblUserLogin">
           <Key>
@@ -105,11 +110,12 @@
         <Function Name="SelectEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="IdealWebApplicationModelStoreContainer">
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_ItemMaster" EntityType="Self.Tbl_ItemMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Tax" EntityType="Self.Tbl_Tax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Unit" EntityType="Self.Tbl_Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCategoryMaster" EntityType="Self.tblCategoryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFirmDetails" EntityType="Self.tblFirmDetails" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblProductMaster" EntityType="Self.tblProductMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStudent" EntityType="Self.tblStudent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUserLogin" EntityType="Self.tblUserLogin" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -144,9 +150,10 @@
           <FunctionImport Name="SelectEmployee" ReturnType="Collection(IdealWebApplicationModel.SelectEmployee_Result)" />
           <EntitySet Name="Tbl_Tax" EntityType="IdealWebApplicationModel.Tbl_Tax" />
           <EntitySet Name="Tbl_Unit" EntityType="IdealWebApplicationModel.Tbl_Unit" />
-          <EntitySet Name="tblProductMasters" EntityType="IdealWebApplicationModel.tblProductMaster" />
           <EntitySet Name="tblFirmDetails" EntityType="IdealWebApplicationModel.tblFirmDetail" />
           <EntitySet Name="tblUserLogins" EntityType="IdealWebApplicationModel.tblUserLogin" />
+          <EntitySet Name="Tbl_ItemMaster" EntityType="IdealWebApplicationModel.Tbl_ItemMaster" />
+          <EntitySet Name="tblStudents" EntityType="IdealWebApplicationModel.tblStudent" />
         </EntityContainer>
         <ComplexType Name="SelectEmployee_Result">
           <Property Type="Int64" Name="EmployeeID" Nullable="false" />
@@ -182,27 +189,6 @@
           <Property Name="updatedDate" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="isActive" Type="Boolean" />
         </EntityType>
-        <EntityType Name="tblProductMaster">
-          <Key>
-            <PropertyRef Name="productId" />
-          </Key>
-          <Property Name="productId" Type="Int64" Nullable="false" />
-          <Property Name="productName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="productTypeId" Type="Int64" />
-          <Property Name="prodCmpId" Type="Int64" />
-          <Property Name="unitId" Type="Int64" />
-          <Property Name="taxId" Type="Int64" />
-          <Property Name="hsn" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="reOrderQty" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="MaxQty" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="firmId" Type="Int64" />
-          <Property Name="barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="barcodeImgPath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="barcodeImgBytes" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="barcoodeImageName" Type="Binary" MaxLength="100" FixedLength="false" />
-          <Property Name="updatedDate" Type="DateTime" Precision="3" />
-          <Property Name="isActive" Type="Boolean" />
-        </EntityType>
         <EntityType Name="tblFirmDetail">
           <Key>
             <PropertyRef Name="firmId" />
@@ -233,6 +219,32 @@
           <Property Name="userId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ItemMaster">
+          <Key>
+            <PropertyRef Name="itemId" />
+          </Key>
+          <Property Name="itemId" Type="Int64" Nullable="false" />
+          <Property Name="ItemName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="itemTypeId" Type="Int64" />
+          <Property Name="unitId" Type="Int64" />
+          <Property Name="taxId" Type="Int64" />
+          <Property Name="SalesRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MrpRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="productDisc" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="createdDate" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="updatedDate" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="reOrderQty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MaxQty" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="isActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblStudent">
+          <Key>
+            <PropertyRef Name="studentId" />
+          </Key>
+          <Property Name="studentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -304,28 +316,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblProductMasters">
-            <EntityTypeMapping TypeName="IdealWebApplicationModel.tblProductMaster">
-              <MappingFragment StoreEntitySet="tblProductMaster">
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
-                <ScalarProperty Name="barcoodeImageName" ColumnName="barcoodeImageName" />
-                <ScalarProperty Name="barcodeImgBytes" ColumnName="barcodeImgBytes" />
-                <ScalarProperty Name="barcodeImgPath" ColumnName="barcodeImgPath" />
-                <ScalarProperty Name="barcode" ColumnName="barcode" />
-                <ScalarProperty Name="firmId" ColumnName="firmId" />
-                <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
-                <ScalarProperty Name="reOrderQty" ColumnName="reOrderQty" />
-                <ScalarProperty Name="hsn" ColumnName="hsn" />
-                <ScalarProperty Name="taxId" ColumnName="taxId" />
-                <ScalarProperty Name="unitId" ColumnName="unitId" />
-                <ScalarProperty Name="prodCmpId" ColumnName="prodCmpId" />
-                <ScalarProperty Name="productTypeId" ColumnName="productTypeId" />
-                <ScalarProperty Name="productName" ColumnName="productName" />
-                <ScalarProperty Name="productId" ColumnName="productId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblFirmDetails">
             <EntityTypeMapping TypeName="IdealWebApplicationModel.tblFirmDetail">
               <MappingFragment StoreEntitySet="tblFirmDetails">
@@ -356,6 +346,34 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="userName" ColumnName="userName" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ItemMaster">
+            <EntityTypeMapping TypeName="IdealWebApplicationModel.Tbl_ItemMaster">
+              <MappingFragment StoreEntitySet="Tbl_ItemMaster">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
+                <ScalarProperty Name="reOrderQty" ColumnName="reOrderQty" />
+                <ScalarProperty Name="updatedDate" ColumnName="updatedDate" />
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="productDisc" ColumnName="productDisc" />
+                <ScalarProperty Name="MrpRate" ColumnName="MrpRate" />
+                <ScalarProperty Name="SalesRate" ColumnName="SalesRate" />
+                <ScalarProperty Name="taxId" ColumnName="taxId" />
+                <ScalarProperty Name="unitId" ColumnName="unitId" />
+                <ScalarProperty Name="itemTypeId" ColumnName="itemTypeId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="itemId" ColumnName="itemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStudents">
+            <EntityTypeMapping TypeName="IdealWebApplicationModel.tblStudent">
+              <MappingFragment StoreEntitySet="tblStudent">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="studentName" ColumnName="studentName" />
+                <ScalarProperty Name="studentId" ColumnName="studentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

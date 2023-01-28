@@ -1,8 +1,10 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    //Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+   // Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
+
+
 <section class="content">
     <div class="container-fluid">
         <ol class="breadcrumb breadcrumb-bg-teal">
@@ -50,14 +52,26 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-line">
-                                <label for="CategoryId">ID</label>
+                                <label for="ProductId">ID</label>
                                 <input type="text" id="CategoryId" class="form-control" placeholder="Category ID" disabled="disabled">
                             </div>
 
                             <div class="form-line">
-                                <label for="Name">Category Name</label>
+                                <label for="Name">Product Name</label>
                                 <input type="text" class="form-control" id="Name" placeholder="Name" />
                             </div>
+                            <div class="form-line">
+                                <label for="Name">Category Name</label>
+                             
+                                <select id="course" class="form-control">
+                                    <option value="">---- SELECT COURSE ----</option>
+                                    <option value="1">शिष्यवृत्ती परीक्षा इयत्ता ८ वी माध्यम मराठी</option>
+                                    <option value="2">Scholarship Examination Class 8 ( Medium English )</option>
+                                    <option value="3">शिष्यवृत्ती परीक्षा इयत्ता ५ वी माध्यम मराठी</option>
+                                    <option value="4">Scholarship Examination Class 5 ( English Medium )</option>
+                                </select>
+                            </div>
+                            
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -74,9 +88,4 @@
 
 @Scripts.Render("~/bundles/js");
 @Scripts.Render("~/Application/js");
-@*<script src="~/Scripts/jquery-3.5.1.js"></script>*@
-
-@*<script src="~/Scripts/jquery.dataTables.min.js"></script>*@
-@*<script src="~/ApplicationJS/ProductCategory.js"></script>*@
-
 

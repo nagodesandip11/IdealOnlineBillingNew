@@ -12,23 +12,20 @@ namespace IdealOnlineBillingNew.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class tblProductMaster
+    public partial class Tbl_ItemMaster
     {
-        public long productId { get; set; }
-        public string productName { get; set; }
-        public Nullable<long> productTypeId { get; set; }
-        public Nullable<long> prodCmpId { get; set; }
+        public long itemId { get; set; }
+        public string ItemName { get; set; }
+        public Nullable<long> itemTypeId { get; set; }
         public Nullable<long> unitId { get; set; }
         public Nullable<long> taxId { get; set; }
-        public string hsn { get; set; }
+        public Nullable<decimal> SalesRate { get; set; }
+        public Nullable<decimal> MrpRate { get; set; }
+        public Nullable<decimal> productDisc { get; set; }
+        public Nullable<decimal> createdDate { get; set; }
+        public Nullable<decimal> updatedDate { get; set; }
         public Nullable<decimal> reOrderQty { get; set; }
         public Nullable<decimal> MaxQty { get; set; }
-        public Nullable<long> firmId { get; set; }
-        public string barcode { get; set; }
-        public string barcodeImgPath { get; set; }
-        public byte[] barcodeImgBytes { get; set; }
-        public byte[] barcoodeImageName { get; set; }
-        public Nullable<System.DateTime> updatedDate { get; set; }
         public Nullable<bool> isActive { get; set; }
     }
 }
